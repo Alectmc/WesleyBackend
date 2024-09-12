@@ -1,11 +1,13 @@
+require('dotenv').config();
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
-const app = express();
+const server = express();
 const port = process.env.PORT;
 
-app.use(bodyParser.json());
+server.use(bodyParser.json());
 
 //Configure email transport using nodemailer
 const transporter = nodemailer.createTransport({
@@ -16,7 +18,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.post('/send-prayer-request', (req, res) => {
+server.post('/send-prayer-request', (req, res) => {
     const { message } = req.body;
 
     const mailOptions = {
@@ -38,6 +40,6 @@ app.post('/send-prayer-request', (req, res) => {
     });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Email Server running on port ${port}`);
 });
