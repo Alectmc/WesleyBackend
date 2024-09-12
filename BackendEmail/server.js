@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'wesleyprayerrequests@gmail.com',
-        pass: 'xdqp wjue cqhh zzuh',
+        pass: 'PASSHERE',
     },
 });
 
@@ -39,5 +39,5 @@ app.post('/send-prayer-request', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Email Server running on port ${port}`);
 });
