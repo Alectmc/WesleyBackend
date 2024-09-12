@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: '',
-        pass: '',
+        user: 'wesleyprayerrequests@gmail.com',
+        pass: 'xdqp wjue cqhh zzuh',
     },
 });
 
@@ -20,8 +20,8 @@ app.post('/send-prayer-request', (req, res) => {
     const { message } = req.body;
 
     const mailOptions = {
-        from: 'no-reply@wesley.com',
-        to: 'alectmc@gmail.com',
+        from: 'The Wesley App',
+        to: 'wesleyprayerrequests@gmail.com',
         subject: 'WESLEY APP: Prayer Request',
         text: message,
     };
