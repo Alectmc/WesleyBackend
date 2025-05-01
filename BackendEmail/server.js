@@ -21,6 +21,11 @@ const transporter = nodemailer.createTransport({
 server.post('/send-prayer-request', (req, res) => {
     const { message } = req.body;
 
+    if (!message || message.trim().length === 0) {
+	console.log('Empty message received... Email Not Sending...');
+	return res.status(400).send('Message body is empty. Email not sent.');
+    }
+
     const mailOptions = {
         from: 'The Wesley App',
         to: 'wesleyprayerrequests@gmail.com',
